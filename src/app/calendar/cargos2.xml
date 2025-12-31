@@ -1,0 +1,33 @@
+<Cargos>
+    <FechaServidor>19/12/2025</FechaServidor>
+    <HoraServidor>00:42:31</HoraServidor>
+    <FechaOperacion>19/12/2025</FechaOperacion>
+    <FolioServidor>1859097</FolioServidor>
+    <ListaCargos>
+        <Cargo claveInstitucion="40137" folioPaquete="21611" folioPago="1"/>
+    </ListaCargos>
+    <Monto>80</Monto>
+    <SaldoNoReservado>295399020.55</SaldoNoReservado>
+    <SaldoReservado>0</SaldoReservado>
+    <ClaveInstitucionOrdenante>90684</ClaveInstitucionOrdenante>
+    <FirmaValida>1</FirmaValida>
+    <Instancia>A</Instancia>
+</Cargos>
+
+
+<Cargos>
+    <FechaServidor>19/12/2025</FechaServidor>
+    <HoraServidor>00:53:01</HoraServidor>
+    <FechaOperacion>19/12/2025</FechaOperacion>
+    <FolioServidor>1894099</FolioServidor>
+    <ListaCargos>
+        <Cargo claveInstitucion="90638" folioPaquete="22005" folioPago="1"/>
+        <Cargo claveInstitucion="90728" folioPaquete="22006" folioPago="1"/>
+    </ListaCargos>
+    <Monto>80</Monto>
+    <SaldoNoReservado>296655208.31</SaldoNoReservado>
+    <SaldoReservado>0</SaldoReservado>
+    <ClaveInstitucionOrdenante>90684</ClaveInstitucionOrdenante>
+    <FirmaValida>1</FirmaValida>
+    <Instancia>A</Instancia>
+</Cargos>

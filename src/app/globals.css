@@ -1,26 +1,156 @@
-@import "tailwindcss";
+/* =========================
+   RESET BÁSICO
+========================= */
+* {
+  box-sizing: border-box;
+}
 
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* =========================
+   THEME TOKENS – BASE
+========================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #07070a;
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel2: rgba(255, 255, 255, 0.09);
+  --stroke: rgba(255, 255, 255, 0.12);
+  --text: rgba(255, 255, 255, 0.94);
+  --muted: rgba(255, 255, 255, 0.62);
+
+  --accent: #f97316;   /* naranja */
+  --accent2: #ef4444;  /* rojo */
+  --accentText: #0b0b0f;
+
+  --radius: 18px;
+  --shadow: 0 18px 60px rgba(0,0,0,.55);
+  --glow: 0 0 0 3px rgba(239,68,68,.25);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* =========================
+   🌙 MODO OSCURO
+========================= */
+html[data-theme="dark"] {
+  --bg: #07070a;
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel2: rgba(255, 255, 255, 0.09);
+  --stroke: rgba(255, 255, 255, 0.12);
+  --text: rgba(255, 255, 255, 0.94);
+  --muted: rgba(255, 255, 255, 0.62);
+
+  --accent: #f97316;
+  --accent2: #ef4444;
+  --accentText: #0b0b0f;
+
+  --shadow: 0 18px 60px rgba(0,0,0,.55);
+  --glow: 0 0 0 3px rgba(239,68,68,.25);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* =========================
+   ☀️ MODO CLARO
+========================= */
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --panel: rgba(15, 23, 42, 0.04);
+  --panel2: rgba(15, 23, 42, 0.06);
+  --stroke: rgba(15, 23, 42, 0.14);
+  --text: rgba(15, 23, 42, 0.92);
+  --muted: rgba(15, 23, 42, 0.62);
+
+  --accent: #2563eb;     /* azul */
+  --accent2: #0f172a;    /* azul marino */
+  --accentText: #ffffff;
+
+  --shadow: 0 18px 50px rgba(15, 23, 42, 0.16);
+  --glow: 0 0 0 3px rgba(37,99,235,.22);
 }
 
+/* =========================
+   FONDO GLOBAL (CAMBIA CON TEMA)
+========================= */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(249,115,22,.18), transparent 55%),
+    radial-gradient(900px 500px at 85% 0%, rgba(239,68,68,.14), transparent 55%),
+    linear-gradient(180deg, var(--bg), var(--bg));
+  color: var(--text);
+}
+
+/* Fondo claro específico */
+html[data-theme="light"] body {
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(37,99,235,.14), transparent 55%),
+    radial-gradient(900px 500px at 85% 0%, rgba(15,23,42,.10), transparent 55%),
+    linear-gradient(180deg, var(--bg), var(--bg));
+}
+
+/* =========================
+   CARDS – ESTILO ENTERPRISE
+========================= */
+.tri-card {
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+/* =========================
+   INPUTS / SELECTS
+========================= */
+.tri-input,
+.tri-select {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--stroke);
+  background: var(--panel2);
+  color: var(--text);
+  outline: none;
+  transition: box-shadow .2s ease, border-color .2s ease, transform .15s ease;
+}
+
+.tri-input:focus,
+.tri-select:focus {
+  box-shadow: var(--glow);
+  border-color: var(--accent);
+}
+
+/* =========================
+   BOTONES – HOVER PRO
+========================= */
+button {
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease,
+    background .15s ease,
+    border-color .15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow), var(--glow);
+}
+
+/* =========================
+   TEXTO AUXILIAR
+========================= */
+.muted {
+  color: var(--muted);
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
