@@ -2,11 +2,14 @@
   "name": "trianglerh-web",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "next start -p $PORT",
+    "lint": "eslint ."
   },
   "dependencies": {
     "firebase": "^12.7.0",
@@ -14,9 +17,6 @@
     "react": "19.2.1",
     "react-dom": "19.2.1"
   },
-    "engines": {
-  "node": "20.x"
-},
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
@@ -28,5 +28,4 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   }
-
 }
