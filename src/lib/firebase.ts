@@ -1,3 +1,4 @@
+// src/lib/firebase.ts
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
@@ -8,17 +9,29 @@ const firebaseConfig = {
   authDomain: process.env.NEXT_PUBLIC_FB_AUTH_DOMAIN!,
   projectId: process.env.NEXT_PUBLIC_FB_PROJECT_ID!,
   appId: process.env.NEXT_PUBLIC_FB_APP_ID!,
-  messagingSenderId: process.env.NEXT_PUBLIC_FB_MESSAGING_SENDER_ID!,
+  messagingSenderId: process.env.NEXT_PUBLIC_FB_MESSAGING_SENDER_ID,
 };
 
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+function getFirebaseApp() {
+  if (getApps().length) return getApp();
+  return initializeApp(firebaseConfig);
+}
 
-export const auth = getAuth(app);
+// ✅ Solo cliente: evita crashear en build/SSR
+export const isBrowser = typeof window !== "undefined";
+
+// Exportamos auth/db SOLO si es browser
+export const app = isBrowser ? getFirebaseApp() : null;
+
+export const auth = isBrowser && app ? getAuth(app) : (null as any);
+export const db = isBrowser && app ? getFirestore(app) : (null as any);
+
 export const googleProvider = new GoogleAuthProvider();
-export const db = getFirestore(app);
 
-// 👇 Importante: messaging solo si el navegador lo soporta
+// Messaging opcional (notifs)
 export async function getClientMessaging() {
+  if (!isBrowser || !app) return null;
   const supported = await isSupported();
-  return supported ? getMessaging(app) : null;
+  if (!supported) return null;
+  return getMessaging(app);
 }
