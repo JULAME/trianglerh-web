@@ -6,8 +6,10 @@ firebase.initializeApp({
   apiKey: "AIzaSyCGp8e6ldrkYyN1klcNx1KfNm2r0ODFkcQ",
   authDomain: "trianglerh-63d38.firebaseapp.com",
   projectId: "trianglerh-63d38",
-  messagingSenderId: "1077110947594", // 🔥 ESTE ERA EL FALTANTE
+  storageBucket: "trianglerh-63d38.firebasestorage.app",
+  messagingSenderId: "1077110947594",
   appId: "1:1077110947594:web:4c66959a7b77adf55f04f3",
+  measurementId: "G-8H0MQH66YK"
 });
 
 const messaging = firebase.messaging();
